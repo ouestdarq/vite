@@ -1,0 +1,43 @@
+{
+	"name": "proxymurder-vuejs-app",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build"
+	},
+	"dependencies": {
+		"vue": "^3.2.40",
+		"vue-router": "^4.1.5"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^3.1.2",
+		"axios": "^0.27.2",
+		"bootstrap-scss": "^5.2.1",
+		"bootstrap-scss-custom": "github:proxymurder/bootstrap-scss-custom",
+		"crypto-js": "^4.1.1",
+		"sass": "^1.55.0",
+		"vite": "^3.1.4",
+		"vite-plugin-restart": "^0.2.0"
+	},
+	"eslintConfig": {
+		"root": true,
+		"env": {
+			"node": true
+		},
+		"extends": [
+			"plugin:vue/vue3-essential",
+			"eslint:recommended"
+		],
+		"parserOptions": {
+			"parser": "@babel/eslint-parser"
+		},
+		"rules": {}
+	},
+	"browserslist": [
+		"> 1%",
+		"last 2 versions",
+		"not dead",
+		"not ie 11"
+	]
+}
