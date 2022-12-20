@@ -6,42 +6,47 @@ import path from 'path';
 import restart from 'vite-plugin-restart';
 import vue from '@vitejs/plugin-vue';
 
-async function getServerConf() {
-	let https = null;
-	try {
-		https = {
-			key: fs.readFileSync(process.env.VITE_SERVER_KEY),
-			cert: fs.readFileSync(process.env.VITE_SERVER_CERT),
-		};
-	} catch (err) {
-		await getServerConf();
-	}
-	let certpath = process.env.VITE_SERVER_CERTPATH;
-	return { https, certpath };
+async function getHttps() {
+    let cert, key;
+    try {
+        cert = fs.readFileSync(process.env.VITE_SERVER_CRT);
+        key = fs.readFileSync(process.env.VITE_SERVER_KEY);
+    } catch (err) {
+        await getHttps();
+    }
+    return { cert: cert, key: key };
 }
 
 export default defineConfig(async ({ mode }) => {
-	process.env = { ...process.env, ...loadEnv(mode, process.cwd(), 'VITE_SERVER') };
+    process.env = {
+        ...process.env,
+        ...loadEnv(mode, process.cwd(), 'VITE_SERVER'),
+    };
+    console.time('https');
+    const https = await getHttps();
+    console.timeEnd('https');
+    console.log(https);
 
-	const { https, certpath } = await getServerConf();
-
-	return {
-		server: {
-			host: true,
-			port: 5173,
-			https: https,
-		},
-		resolve: {
-			alias: {
-				'~': path.resolve(__dirname, './node_modules'),
-				'@': path.resolve(__dirname, './src'),
-			},
-		},
-		plugins: [
-			restart({
-				restart: ['tsconfig.json', certpath],
-			}),
-			vue(),
-		],
-	};
+    return {
+        server: {
+            host: true,
+            port: 5173,
+            https: https,
+        },
+        resolve: {
+            alias: {
+                '~': path.resolve(__dirname, './node_modules'),
+                '@': path.resolve(__dirname, './src'),
+            },
+        },
+        plugins: [
+            restart({
+                restart: [
+                    path.relative(__dirname, process.env.VITE_SERVER_CRT),
+                    'tsconfig.json',
+                ],
+            }),
+            vue(),
+        ],
+    };
 });
