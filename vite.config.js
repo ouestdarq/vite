@@ -18,7 +18,7 @@ export default defineConfig(async ({ mode }) => {
         plugins: [
             vue(),
             smallstep({
-                path: process.env.VITE_STEPPATH,
+                steppath: process.env.VITE_STEPPATH,
             }),
         ],
     };
