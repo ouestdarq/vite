@@ -8,16 +8,16 @@
     },
     "dependencies": {
         "bootstrap-scss-custom": "github:proxymurder/bootstrap-scss-custom",
-        "vue": "^3.2.45",
-        "vue-router": "^4.1.6"
+        "vue": "^3.3.4",
+        "vue-router": "^4.2.2"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^4.0.0",
-        "axios": "^1.2.1",
-        "bootstrap-scss": "^5.2.3",
+        "@vitejs/plugin-vue": "^4.2.3",
+        "axios": "^1.4.0",
+        "bootstrap-scss": "^5.3.0",
         "crypto-js": "^4.1.1",
-        "sass": "^1.57.1",
-        "vite": "^4.0.3",
+        "sass": "^1.63.3",
+        "vite": "^4.3.9",
         "vite-plugin-smallstep": "github:proxymurder/vite-plugin-smallstep"
     },
     "eslintConfig": {
