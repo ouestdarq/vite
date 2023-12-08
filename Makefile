@@ -1,4 +1,4 @@
-all:
+all: vite-latest
 
-test-app:
-	docker build -t proxymurder/node:app ./
+vite-latest:
+	docker build -t proxymurder/vite:latest -f Dockerfile ./
