@@ -1,4 +1,4 @@
-all: vite-latest
+all: docker-vite-service
 
-vite-latest:
-	docker build -t proxymurder/vite:latest -f Dockerfile ./
+docker-vite-service:
+	docker build -t proxymurder/vite:latest ./
