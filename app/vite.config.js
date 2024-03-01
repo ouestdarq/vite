@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
 export default defineConfig(async ({ mode }) => {
+    console.log(process.env.VITE_STEPPATH);
     return {
         server: {
             host: true,

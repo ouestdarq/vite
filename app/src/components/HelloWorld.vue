@@ -16,7 +16,7 @@ const props = defineProps({
 });
 const axios = inject('axios');
 axios
-	.get(`${routes.api}/test`)
+	.get(`https://${routes.api}/test`)
 	.then((res) => {
 		console.log(res);
 	})
